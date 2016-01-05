@@ -16,27 +16,34 @@ clear all;
 clc;
 
 Nteams = 10;
-Nweeks = 2;
+Nweeks = 1;
 
 
 TeamNumList = 1:1:Nteams;
 
 Schedule = zeros(Nteams/2,2,Nweeks);
 
+data = TeamNumList;
+
 for h = 1:Nweeks
-    
-    data = TeamNumList;
 
-    for i = 1:Nteams/2
+    for i = 1:1%Nteams
         
-        for j = 1:2
+        if mod(i,2) == 1
 
-            Schedule(i,j,h) = datasample(data,1);
+            Schedule(i,1,h) = datasample(data,1);
 
-            index = find(data == Schedule(i,j,h));
+            index = find(data == Schedule(i,1,h));
+            data(index) = []
+        
+        elseif mod(i,2) == 0
+            
+            Schedule(i,2,h) = datasample(data,1);
+
+            index = find(data == Schedule(i,1,h));
             data(index) = [];
             
-        end
+        end % end of if-statement
 
     end % end of for-loop
     
