@@ -44,6 +44,6 @@ function [Z] = RemovePrevTeamFromWeekMatches(pick,X)
 
         Z(j,:) = Y(indeces(j),:);
 
-    end  
+    end
 
 end % end of function
